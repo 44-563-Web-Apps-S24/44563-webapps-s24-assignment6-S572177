@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>webapps lab6</title>
+    </head>
+ 
+<body>
+    <h1>Animal game by Swetha</h1>
+
+<h2>Getting input</h2>
+
+<form>
+    <label for="hidden_animal">The hidden animal type </label>
+    <input type ="password" id="hidden_animal" name="hidden" value="Chicken"> <br>
+
+    <label for="guess_animal">Guess the animal </label>
+    <input type ="text" id="guess_animal" name="Guess"> <br>
+
+    <input type="button" onclick="checkAnimal()" value="Check the Guess" id="submit-btn">
+</form>
+
+
+<p id="result"></p>
+
+<script>
+    let wrong = 0;
+    let correct = 0;
+
+
+function checkAnimal (){
+    console.log("Guessing the animal")
+    let hiddenAnimal = document.getElementById("hidden_animal").value
+    let guessAnimal = document.getElementById("guess_animal").value
+    confirmed = confirm("Are these the values? "+hiddenAnimal+" and "+guessAnimal)
+
+    
+
+
+    
+    if (hiddenAnimal==guessAnimal) {
+        correct+=1;
+        alert("Ruff ruff");
+
+    }else{
+        wrong+=1;
+        alert("Grrrr");
+    }
+
+    out = document.getElementById("result")
+    if(hiddenAnimal==guessAnimal){
+        out.innerHTML = "Correct: "+ correct +"Wrong: "+ wrong
+    } else {
+        out.innerHTML = "Correct: "+ correct+ "Wrong: " + wrong
+    }
+}
+</script>
+
+</body>
+</html> 
