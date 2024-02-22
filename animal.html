@@ -1,59 +1,87 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>webapps lab6</title>
-    </head>
+<html lang="en">
+  <head>
+    <title>webapps assignment 6</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <main id="container">
+      <h1><i>Animal game by Swetha</i></h1>
+      <h2>Getting input</h2>
+
+      <form>
+        <label
+          >This hidden animal name
+        <input 
+          type="password" 
+          name="hidden" 
+          id="hidden_animal" 
+          value="Chicken"
+          /></label
+          ><br />
+        <label
+        >Guess the animal
+        <input type="text" name="Guess" id="guess_animal" /> </label
+        ><br />
+        <button type="button" onclick="checkAnimal()" id="submit-btn">Check the guess</button>
+      </form>
+      <p id="result"></p>
+      <br />
+      <br />
+      
+      
+      <div class="container">
+        <h2>Change an image</h2>
+        <img
+          id="change-img"
+          src="sprite.jpg"
+          alt="Espresso"
+          onclick="selectImage()"
+        />
+      </div>
+    </main>
+    <script>
+      let wrong = 0;
+      let correct = 0;
+      let useImage = 1;
+
+    function checkAnimal(){
+        console.log("Guessing the animal")
+        let hiddenAnimal = document.getElementById("hidden_animal").value
+        let guessAnimal = document.getElementById("guess_animal").value
+        confirmed = confirm("Are these the values? "+ hiddenAnimal + " and " + guessAnimal)
+        if(hiddenAnimal==guessAnimal){
+            correct++;
+            alert("Ruff Ruff");
+        }else{
+            wrong++;
+            alert("Grrrrr");
+        }
+        document.getElementById('result').innerHTML = 'Correct: ' + correct + ', Wrong: ' + wrong;
+
+    }
+
+    function selectImage () {
+        let imageSrc = document.getElementById("change-img");
+        switch (useImage) {
+          case 1:
+            useImage = 2;
+            imageSrc.src = "HotChocolate.jpg";
+            break;
+          case 2:
+            useImage = 3;
+            imageSrc.src = "sprite.jpg";
+            break;
+          case 3:
+            useImage = 1;
+            imageSrc.src = "Espresso.jpg";
+            break;
+          default:
+            break;
+        }
+    };
+    </script>
+  </body>
+</html>
  
-<body>
-    <h1>Animal game by Swetha</h1>
-
-<h2>Getting input</h2>
-
-<form>
-    <label for="hidden_animal">The hidden animal type </label>
-    <input type ="password" id="hidden_animal" name="hidden" value="Chicken"> <br>
-
-    <label for="guess_animal">Guess the animal </label>
-    <input type ="text" id="guess_animal" name="Guess"> <br>
-
-    <input type="button" onclick="checkAnimal()" value="Check the Guess" id="submit-btn">
-</form>
-
-
-<p id="result"></p>
-
-<script>
-    let wrong = 0;
-    let correct = 0;
-
-
-function checkAnimal (){
-    console.log("Guessing the animal")
-    let hiddenAnimal = document.getElementById("hidden_animal").value
-    let guessAnimal = document.getElementById("guess_animal").value
-    confirmed = confirm("Are these the values? "+hiddenAnimal+" and "+guessAnimal)
-
-    
-
-
-    
-    if (hiddenAnimal==guessAnimal) {
-        correct+=1;
-        alert("Ruff ruff");
-
-    }else{
-        wrong+=1;
-        alert("Grrrr");
-    }
-
-    out = document.getElementById("result")
-    if(hiddenAnimal==guessAnimal){
-        out.innerHTML = "Correct: "+ correct +"Wrong: "+ wrong
-    } else {
-        out.innerHTML = "Correct: "+ correct+ "Wrong: " + wrong
-    }
-}
-</script>
-
-</body>
-</html> 

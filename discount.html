@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WEB APPS ASSIGNMENT 6</title>
+     </head>   
+ 
+ <body>
+
+ <h1> Swetha Kamineni discount calculations </h1>
+
+ <form>
+    <label for="price">Enter price per : </label>
+    <input type="number" id="price"  value="20"> 
+    <br>
+    <label for="count">Enter the number of items : </label>
+    <input type="number" id="count"  value="10"> 
+    <br>
+    <label for="reductions">Enter the discount percentage : </label>
+    <input type="number" id="reductions" value="5">
+    <br>
+
+    <button type="button" onclick="discount()">Show Total</button>
+ </form>
+ <p id="totals"></p>
+ <script>
+
+    function discount() {
+
+        let price = document.getElementById("price").value;
+        let number = document.getElementById("count").value;
+        let reduction = document.getElementById("reductions").value;
+        let myOutput = " ";
+        for (i = 0; i < 5; i++) {
+            let finalprice = (price*number) - (price*(reduction/100));
+            
+            myOutput += `${reduction}% is ${finalprice}; `;
+            reduction++;
+
+        }
+
+        document.getElementById('totals').innerHTML = 'Totals are: ' + myOutput;
+    }
+
+ </script>
+
+
+ <form>
+    <label for="sum">Sum</label>
+    <input type="radio" id="sum" onclick="chooseOp()" name="Swetha"  value="sum">
+    <label for="mult">mult</label>
+    <input type="radio" id="mult" onclick="chooseOp()" name="Swetha"  value="multiply">
+    <label for="exp">exp</label>
+    <input type="radio" id="exp" onclick="chooseOp()" name="Swetha"  value="exponent">
+
+
+    <div id="result"></div>
+  </form>
+ <script>
+        function chooseOp() {
+            let price = document.getElementById("price").value;
+            let reduction = document.getElementById("reductions").value;
+            let sum = document.getElementById("sum").checked;
+            let mul = document.getElementById("mult").checked;
+            let exp = document.getElementById("exp").checked;
+            if(sum) {
+                let total = parseInt(price) + parseInt(reduction);
+                document.getElementById("result").innerHTML = "The result is: " + total;
+            }
+            else if(mul) {
+                let total = price * reduction;
+                document.getElementById("result").innerHTML = "The result is: " + total;
+            }
+            else if(exp) {
+                let total = Math.pow(price, reduction);
+                document.getElementById("result").innerHTML = "The result is: " + total;
+            }
+
+        }
+ </script>
+
+
+ </body>
+</html>
