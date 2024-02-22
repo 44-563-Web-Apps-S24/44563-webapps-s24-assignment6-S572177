@@ -1,87 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <title>webapps assignment 6</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body>
-    <main id="container">
-      <h1><i>Animal game by Swetha</i></h1>
-      <h2>Getting input</h2>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            padding: 20px;
+        }
 
-      <form>
-        <label
-          >This hidden animal name
-        <input 
-          type="password" 
-          name="hidden" 
-          id="hidden_animal" 
-          value="Chicken"
-          /></label
-          ><br />
-        <label
-        >Guess the animal
-        <input type="text" name="Guess" id="guess_animal" /> </label
-        ><br />
-        <button type="button" onclick="checkAnimal()" id="submit-btn">Check the guess</button>
-      </form>
-      <p id="result"></p>
-      <br />
-      <br />
-      
-      
-      <div class="container">
-        <h2>Change an image</h2>
-        <img
-          id="change-img"
-          src="sprite.jpg"
-          alt="Espresso"
-          onclick="selectImage()"
-        />
-      </div>
+        #result {
+            margin-top: 20px;
+            font-size: medium;
+            color: blue;
+            background-color: antiquewhite;
+
+        }
+    </style>
+</head>
+
+<body>
+    <main id="container">
+        <h1><i>Animal game by Swetha</i></h1>
+        <h2>Getting input</h2>
+
+        <form>
+            <label>This hidden animal name
+                <input type="password" name="hidden" id="hidden_animal" value="Chicken" /></label><br />
+            <label>Guess the animal
+                <input type="text" name="Guess" id="guess_animal" /> </label><br />
+            <button type="button" onclick="checkAnimal()" id="submit-btn">Check the guess</button>
+        </form>
+        <p id="result"></p>
+        <br />
+        <br />
+
+
+        <div class="container">
+            <h2>Change an image</h2>
+            <img id="change-img" src="sprite.jpg" alt="Espresso" onclick="selectImage()" />
+        </div>
     </main>
     <script>
-      let wrong = 0;
-      let correct = 0;
-      let useImage = 1;
+        let wrong = 0;
+        let correct = 0;
+        let useImage = 1;
 
-    function checkAnimal(){
-        console.log("Guessing the animal")
-        let hiddenAnimal = document.getElementById("hidden_animal").value
-        let guessAnimal = document.getElementById("guess_animal").value
-        confirmed = confirm("Are these the values? "+ hiddenAnimal + " and " + guessAnimal)
-        if(hiddenAnimal==guessAnimal){
-            correct++;
-            alert("Ruff Ruff");
-        }else{
-            wrong++;
-            alert("Grrrrr");
+        function checkAnimal() {
+            console.log("Guessing the animal")
+            let hiddenAnimal = document.getElementById("hidden_animal").value
+            let guessAnimal = document.getElementById("guess_animal").value
+            confirmed = confirm("Are these the values? " + hiddenAnimal + " and " + guessAnimal)
+            if (hiddenAnimal == guessAnimal) {
+                correct++;
+                alert("Ruff Ruff");
+            } else {
+                wrong++;
+                alert("Grrrrr");
+            }
+            document.getElementById('result').innerHTML = 'Correct: ' + correct + ', Wrong: ' + wrong;
+
+            if (wrong > correct) {
+                replaceOnClick();
+            }
+
         }
-        document.getElementById('result').innerHTML = 'Correct: ' + correct + ', Wrong: ' + wrong;
 
-    }
-
-    function selectImage () {
-        let imageSrc = document.getElementById("change-img");
-        switch (useImage) {
-          case 1:
-            useImage = 2;
-            imageSrc.src = "HotChocolate.jpg";
-            break;
-          case 2:
-            useImage = 3;
-            imageSrc.src = "sprite.jpg";
-            break;
-          case 3:
-            useImage = 1;
-            imageSrc.src = "Espresso.jpg";
-            break;
-          default:
-            break;
+        function replaceOnClick() {
+            document.querySelector('button').onclick = function () {
+                alert('Sorry, too many wrong guesses.');
+            }
         }
-    };
+
+        function selectImage() {
+            let imageSrc = document.getElementById("change-img");
+            switch (useImage) {
+                case 1:
+                    useImage = 2;
+                    imageSrc.src = "HotChocolate.jpg";
+                    break;
+                case 2:
+                    useImage = 3;
+                    imageSrc.src = "sprite.jpg";
+                    break;
+                case 3:
+                    useImage = 1;
+                    imageSrc.src = "Espresso.jpg";
+                    break;
+                default:
+                    break;
+            }
+        };
     </script>
-  </body>
+</body>
+
 </html>
- 

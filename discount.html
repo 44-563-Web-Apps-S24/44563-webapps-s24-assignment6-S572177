@@ -1,83 +1,106 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>WEB APPS ASSIGNMENT 6</title>
-     </head>   
- 
- <body>
 
- <h1> Swetha Kamineni discount calculations </h1>
-
- <form>
-    <label for="price">Enter price per : </label>
-    <input type="number" id="price"  value="20"> 
-    <br>
-    <label for="count">Enter the number of items : </label>
-    <input type="number" id="count"  value="10"> 
-    <br>
-    <label for="reductions">Enter the discount percentage : </label>
-    <input type="number" id="reductions" value="5">
-    <br>
-
-    <button type="button" onclick="discount()">Show Total</button>
- </form>
- <p id="totals"></p>
- <script>
-
-    function discount() {
-
-        let price = document.getElementById("price").value;
-        let number = document.getElementById("count").value;
-        let reduction = document.getElementById("reductions").value;
-        let myOutput = " ";
-        for (i = 0; i < 5; i++) {
-            let finalprice = (price*number) - (price*(reduction/100));
-            
-            myOutput += `${reduction}% is ${finalprice}; `;
-            reduction++;
-
+<head>
+    <title>WEB APPS ASSIGNMENT 6</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            padding: 20px;
         }
 
-        document.getElementById('totals').innerHTML = 'Totals are: ' + myOutput;
-    }
+        #result {
+            margin-top: 20px;
+            font-size: medium;
+            color: blue;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
 
- </script>
+<body>
+
+    <h1> Swetha Kamineni discount calculations </h1>
+
+    <form>
+        <label for="price">Enter price per : </label>
+        <input type="number" id="price" value="20">
+        <br>
+        <label for="count">Enter the number of items : </label>
+        <input type="number" id="count" value="10">
+        <br>
+        <label for="reductions">Enter the discount percentage : </label>
+        <input type="number" id="reductions" value="5">
+        <br>
+
+        <button type="button" onclick="discount()">Show Total</button>
+    </form>
+    <p id="totals"></p>
+    <script>
+
+        function discount() {
+
+            let price = document.getElementById("price").value;
+            let number = document.getElementById("count").value;
+            let reduction = document.getElementById("reductions").value;
+            let myOutput = " ";
+            for (i = 0; i < 5; i++) {
+                let finalprice = (price * number) - (price * (reduction / 100));
+
+                myOutput += `${reduction}% is ${finalprice}; `;
+                reduction++;
+
+            }
+
+            document.getElementById('totals').innerHTML = 'Totals are: ' + myOutput;
+        }
+
+    </script>
 
 
- <form>
-    <label for="sum">Sum</label>
-    <input type="radio" id="sum" onclick="chooseOp()" name="Swetha"  value="sum">
-    <label for="mult">mult</label>
-    <input type="radio" id="mult" onclick="chooseOp()" name="Swetha"  value="multiply">
-    <label for="exp">exp</label>
-    <input type="radio" id="exp" onclick="chooseOp()" name="Swetha"  value="exponent">
+    <form>
+        <label for="sum">Sum</label>
+        <input type="radio" id="sum" onclick="chooseOp()" name="Swetha" value="sum">
+        <label for="mult">mult</label>
+        <input type="radio" id="mult" onclick="chooseOp()" name="Swetha" value="multiply">
+        <label for="exp">exp</label>
+        <input type="radio" id="exp" onclick="chooseOp()" name="Swetha" value="exponent">
 
 
-    <div id="result"></div>
-  </form>
- <script>
+        <div id="result"></div>
+    </form>
+    <script>
         function chooseOp() {
             let price = document.getElementById("price").value;
             let reduction = document.getElementById("reductions").value;
             let sum = document.getElementById("sum").checked;
             let mul = document.getElementById("mult").checked;
             let exp = document.getElementById("exp").checked;
-            if(sum) {
+            if (sum) {
                 let total = parseInt(price) + parseInt(reduction);
                 document.getElementById("result").innerHTML = "The result is: " + total;
             }
-            else if(mul) {
+            else if (mul) {
                 let total = price * reduction;
                 document.getElementById("result").innerHTML = "The result is: " + total;
             }
-            else if(exp) {
+            else if (exp) {
                 let total = Math.pow(price, reduction);
                 document.getElementById("result").innerHTML = "The result is: " + total;
             }
 
         }
- </script>
+    </script>
 
 
- </body>
+     
+</body>
+
 </html>
